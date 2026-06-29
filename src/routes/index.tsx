@@ -32,45 +32,46 @@ function Index() {
   const { current } = useLocation();
   return (
     <div>
-      {/* HERO */}
-      <section className="relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-secondary/60 via-background to-background" />
-        <div className="absolute -top-32 -right-32 size-[36rem] rounded-full bg-accent/20 blur-3xl" />
-        <div className="absolute -bottom-40 -left-32 size-[40rem] rounded-full bg-primary/10 blur-3xl" />
-        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-16 pb-24 lg:pt-24 lg:pb-32 grid lg:grid-cols-2 gap-12 items-center">
+      {/* HERO — hot pink + bold display */}
+      <section className="relative overflow-hidden bg-[var(--hot-pink)] text-white">
+        <div className="absolute -top-32 -right-32 size-[36rem] rounded-full bg-white/10 blur-3xl" />
+        <div className="absolute -bottom-40 -left-32 size-[40rem] rounded-full bg-[var(--mint)]/30 blur-3xl" />
+        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-16 pb-20 lg:pt-24 lg:pb-28 grid lg:grid-cols-2 gap-12 items-center">
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease: "easeOut" }}
           >
-            <span className="inline-flex items-center gap-2 rounded-full bg-secondary px-3 py-1 text-xs font-semibold tracking-widest uppercase text-primary">
+            <span className="inline-flex items-center gap-2 rounded-full bg-[var(--ink)] text-white px-3 py-1 text-xs font-bold tracking-widest uppercase">
               <Sparkles className="size-3.5" /> Since 2022 · Bizerte
             </span>
-            <h1 className="mt-5 font-display text-5xl sm:text-6xl lg:text-7xl font-semibold leading-[0.95] text-balance">
-              Baked fresh.<br />
-              <span className="italic text-accent">Served bright.</span>
+            <h1 className="mt-5 leading-[0.85]">
+              <span className="block font-heavy uppercase text-[clamp(4rem,12vw,9rem)] tracking-tight">Baked</span>
+              <span className="block font-script text-[var(--mint)] text-[clamp(3.5rem,11vw,8rem)] -mt-3">
+                served bright
+              </span>
             </h1>
-            <p className="mt-5 max-w-lg text-lg text-muted-foreground text-balance">
+            <p className="mt-5 max-w-lg text-lg opacity-95">
               A neighborhood bakery & juice bar. Hand-pulled coffee, cold-pressed juices,
               warm brunch, and pastries baked every morning.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <Link
                 to="/menu"
-                className="inline-flex items-center gap-2 rounded-full bg-primary text-primary-foreground px-6 py-3 text-sm font-semibold hover:opacity-90 transition-opacity"
+                className="inline-flex items-center gap-2 rounded-full bg-[var(--ink)] text-white px-6 py-3 text-sm font-bold hover:scale-[1.02] transition-transform"
               >
                 See the menu <ArrowRight className="size-4" />
               </Link>
               <Link
                 to="/locations"
-                className="inline-flex items-center gap-2 rounded-full border border-border bg-background px-6 py-3 text-sm font-semibold hover:bg-secondary transition-colors"
+                className="inline-flex items-center gap-2 rounded-full border-2 border-white/40 px-6 py-3 text-sm font-bold hover:bg-white/10 transition-colors"
               >
-                <MapPin className="size-4 text-accent" /> Find us
+                <MapPin className="size-4" /> Find us
               </Link>
             </div>
-            <div className="mt-8 flex items-center gap-6 text-sm text-muted-foreground">
-              <span className="inline-flex items-center gap-2"><Clock className="size-4 text-accent" /> 7:00 — 23:00 daily</span>
-              <span className="inline-flex items-center gap-2"><MapPin className="size-4 text-accent" /> {current.city}</span>
+            <div className="mt-8 flex items-center gap-6 text-sm opacity-90">
+              <span className="inline-flex items-center gap-2"><Clock className="size-4" /> 7:00 — 23:00 daily</span>
+              <span className="inline-flex items-center gap-2"><MapPin className="size-4" /> {current.city}</span>
             </div>
           </motion.div>
 
@@ -80,14 +81,14 @@ function Index() {
             transition={{ duration: 0.8, delay: 0.1, ease: "easeOut" }}
             className="relative"
           >
-            <div className="relative aspect-[4/5] rounded-[2.5rem] overflow-hidden shadow-2xl ring-1 ring-border">
+            <div className="relative aspect-[4/5] rounded-[2.5rem] overflow-hidden shadow-2xl ring-4 ring-white/20">
               <img src={combo.url} alt="Pistachio cheesecake & iced coffee" className="h-full w-full object-cover" />
             </div>
             <motion.div
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4 }}
-              className="absolute -left-4 sm:-left-10 bottom-10 w-44 rounded-2xl overflow-hidden shadow-xl ring-1 ring-border rotate-[-6deg]"
+              className="absolute -left-4 sm:-left-10 bottom-10 w-44 rounded-2xl overflow-hidden shadow-xl ring-4 ring-[var(--mint)] rotate-[-6deg]"
             >
               <img src={drinks.url} alt="Iced drinks" className="w-full h-44 object-cover" />
             </motion.div>
@@ -95,7 +96,7 @@ function Index() {
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.6 }}
-              className="absolute -right-2 top-6 w-32 rounded-2xl overflow-hidden shadow-xl ring-1 ring-border rotate-[8deg] hidden sm:block"
+              className="absolute -right-2 top-6 w-32 rounded-2xl overflow-hidden shadow-xl ring-4 ring-[var(--ink)] rotate-[8deg] hidden sm:block"
             >
               <img src={muffin.url} alt="Muffin" className="w-full h-32 object-cover" />
             </motion.div>
@@ -105,15 +106,16 @@ function Index() {
       </section>
 
       {/* MARQUEE */}
-      <div className="border-y border-border bg-primary text-primary-foreground py-4 overflow-hidden">
-        <div className="flex gap-12 whitespace-nowrap animate-[marquee_30s_linear_infinite] font-display text-2xl">
+      <div className="border-y border-border bg-[var(--ink)] text-white py-4 overflow-hidden">
+        <div className="flex gap-12 whitespace-nowrap animate-[marquee_30s_linear_infinite] font-script text-3xl text-[var(--mint)]">
           {Array.from({ length: 2 }).flatMap((_, k) =>
             ["Fresh bakes", "★", "Cold-pressed juice", "★", "Pistachio everything", "★", "Brunch all day", "★", "Real coffee", "★"]
-              .map((w, i) => <span key={`${k}-${i}`} className="opacity-90">{w}</span>)
+              .map((w, i) => <span key={`${k}-${i}`} className="opacity-95">{w}</span>)
           )}
         </div>
         <style>{`@keyframes marquee { from { transform: translateX(0) } to { transform: translateX(-50%) } }`}</style>
       </div>
+
 
       {/* FEATURED */}
       <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20">
