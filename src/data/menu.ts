@@ -69,7 +69,7 @@ export const items: MenuItem[] = [
   // Hot Drinks
   { id: "espresso", name: "Espresso", description: "Single shot, dark and bright.", price: 2.5, category: "hot-drinks" },
   { id: "double-espresso", name: "Double Espresso", description: "Two pulls, one cup.", price: 3.5, category: "hot-drinks" },
-  { id: "cappuccino", name: "Cappuccino", description: "Velvety steamed milk, cocoa dust.", price: 4.5, category: "hot-drinks", image: I.combo },
+  { id: "cappuccino", name: "Cappuccino", description: "Velvety steamed milk, cocoa dust.", price: 4.5, category: "hot-drinks", image: I.combo, tags: ["popular"] },
   { id: "latte", name: "Café Latte", description: "Silky espresso latte, lightly sweet.", price: 5, category: "hot-drinks" },
   { id: "mocha", name: "Mocha", description: "Espresso, chocolate, steamed milk.", price: 6, category: "hot-drinks" },
 
@@ -139,7 +139,7 @@ export const items: MenuItem[] = [
   { id: "tisane-camomille", name: "Camomille", description: "Floral, soothing.", price: 4, category: "tisane" },
 
   // Brunch
-  { id: "brunch-cheezy", name: "The Cheezy Brunch", description: "Eggs, breads, cheeses, fruit, juice & coffee.", price: 32, category: "brunch", image: I.omelet, tags: ["signature"] },
+  { id: "brunch-cheezy", name: "The Cheezy Brunch", description: "Eggs, breads, cheeses, fruit, juice & coffee.", price: 32, category: "brunch", image: I.omelet, tags: ["signature", "popular"] },
 
   // Milkshake / Glace
   { id: "milkshake-vanilla", name: "Vanilla Milk Shake", description: "Bourbon vanilla ice cream blended.", price: 9, category: "milkshake" },
