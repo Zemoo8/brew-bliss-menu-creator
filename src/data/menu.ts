@@ -4,9 +4,14 @@ import cookies from "@/assets/cookies.webp.asset.json";
 import muffin from "@/assets/muffin_dark.jpg.asset.json";
 import cupcake from "@/assets/cupcake_pistachio.jpg.asset.json";
 import butterfly from "@/assets/butterfly_drink.jpg.asset.json";
-import tuna from "@/assets/tuna_sandwich.jpg.asset.json";
+import tunaOld from "@/assets/tuna_sandwich.jpg.asset.json";
 import omelet from "@/assets/omelet.jpg.asset.json";
-import combo2 from "@/assets/combo_pistachio.webp.asset.json";
+import cake from "@/assets/cake-chocolate.webp.asset.json";
+import atomique from "@/assets/atomique-muffin.jpg.asset.json";
+import tuna from "@/assets/tuna-baguette.jpg.asset.json";
+import avocado from "@/assets/avocado-toast.jpg.asset.json";
+import berry from "@/assets/berry-brioche.jpg.asset.json";
+import newBrunch from "@/assets/new-brunch.jpg.asset.json";
 
 export type Category = {
   slug: string;
@@ -41,6 +46,7 @@ export const categories: Category[] = [
   { slug: "salad-bowl", name: "Salad Bowl" },
   { slug: "crepe", name: "Crêpe" },
   { slug: "fresh-juice", name: "The Fresh Juice" },
+  { slug: "pastry", name: "Pastry & Cakes", blurb: "Baked every morning." },
 ];
 
 export type MenuItem = {
@@ -60,9 +66,14 @@ const I = {
   muffin: muffin.url,
   cupcake: cupcake.url,
   butterfly: butterfly.url,
-  tuna: tuna.url,
+  tunaOld: tunaOld.url,
   omelet: omelet.url,
-  combo2: combo2.url,
+  cake: cake.url,
+  atomique: atomique.url,
+  tuna: tuna.url,
+  avocado: avocado.url,
+  berry: berry.url,
+  newBrunch: newBrunch.url,
 };
 
 export const items: MenuItem[] = [
