@@ -73,6 +73,10 @@
   --coral: oklch(0.74 0.18 25);
   --coral-foreground: oklch(0.99 0 0);
   --lavender: oklch(0.88 0.05 295);
+  --hot-pink: oklch(0.68 0.31 350);                /* electric magenta */
+  --hot-pink-foreground: oklch(0.99 0 0);
+  --mint: oklch(0.88 0.13 150);                    /* soft mint green */
+  --ink: oklch(0.18 0.04 285);                     /* near-black navy */
 }
 
 .dark {
