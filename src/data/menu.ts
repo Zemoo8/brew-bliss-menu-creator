@@ -139,7 +139,7 @@ export const items: MenuItem[] = [
   { id: "tisane-camomille", name: "Camomille", description: "Floral, soothing.", price: 4, category: "tisane" },
 
   // Brunch
-  { id: "brunch-cheezy", name: "The Cheezy Brunch", description: "Eggs, breads, cheeses, fruit, juice & coffee.", price: 32, category: "brunch", image: I.omelet, tags: ["signature"] },
+  { id: "brunch-cheezy", name: "The Cheezy Brunch", description: "Eggs, breads, cheeses, fruit, juice & coffee.", price: 32, category: "brunch", image: I.omelet, tags: ["signature", "popular"] },
 
   // Milkshake / Glace
   { id: "milkshake-vanilla", name: "Vanilla Milk Shake", description: "Bourbon vanilla ice cream blended.", price: 9, category: "milkshake" },
