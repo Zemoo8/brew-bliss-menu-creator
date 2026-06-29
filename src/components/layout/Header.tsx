@@ -1,7 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { Menu, MapPin, ChevronDown, X } from "lucide-react";
-import logo from "@/assets/logo.jpg.asset.json";
+import logo from "@/assets/logo-nobg.png.asset.json";
 import { useLocation } from "@/lib/location-context";
 import {
   DropdownMenu,
@@ -27,9 +27,8 @@ export function Header() {
   return (
     <header className="sticky top-0 z-50 backdrop-blur-md bg-background/80 border-b border-border/60">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-4">
-        <Link to="/" className="flex items-center gap-2 shrink-0">
-          <img src={logo.url} alt="Cheezy" className="h-10 w-auto rounded-md" />
-          <span className="font-display text-xl font-semibold tracking-tight">Cheezy</span>
+        <Link to="/" className="flex items-center shrink-0" aria-label="Cheezy home">
+          <img src={logo.url} alt="Cheezy — Baker and Fine Cake Maker" className="h-10 sm:h-11 w-auto" />
         </Link>
 
         <nav className="hidden md:flex items-center gap-1">

@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { Instagram, Facebook, MapPin } from "lucide-react";
-import logo from "@/assets/logo.jpg.asset.json";
+import logo from "@/assets/logo-nobg.png.asset.json";
 
 export function Footer() {
   return (
@@ -8,13 +8,7 @@ export function Footer() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-14 grid gap-10 md:grid-cols-4">
         <div className="md:col-span-2">
           <div className="flex items-center gap-3">
-            <img src={logo.url} alt="Cheezy" className="h-12 w-auto rounded-md" />
-            <div>
-              <p className="font-display text-2xl font-semibold">Cheezy</p>
-              <p className="text-xs text-muted-foreground tracking-widest uppercase">
-                Baker & fine cake maker · Since 2022
-              </p>
-            </div>
+            <img src={logo.url} alt="Cheezy — Baker and Fine Cake Maker" className="h-14 w-auto" />
           </div>
           <p className="mt-4 max-w-md text-sm text-muted-foreground">
             A neighborhood bakery and juice bar in Bizerte, baking fresh every day —

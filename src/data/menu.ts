@@ -4,9 +4,14 @@ import cookies from "@/assets/cookies.webp.asset.json";
 import muffin from "@/assets/muffin_dark.jpg.asset.json";
 import cupcake from "@/assets/cupcake_pistachio.jpg.asset.json";
 import butterfly from "@/assets/butterfly_drink.jpg.asset.json";
-import tuna from "@/assets/tuna_sandwich.jpg.asset.json";
+import tunaOld from "@/assets/tuna_sandwich.jpg.asset.json";
 import omelet from "@/assets/omelet.jpg.asset.json";
-import combo2 from "@/assets/combo_pistachio.webp.asset.json";
+import cake from "@/assets/cake-chocolate.webp.asset.json";
+import atomique from "@/assets/atomique-muffin.jpg.asset.json";
+import tuna from "@/assets/tuna-baguette.jpg.asset.json";
+import avocado from "@/assets/avocado-toast.jpg.asset.json";
+import berry from "@/assets/berry-brioche.jpg.asset.json";
+import newBrunch from "@/assets/new-brunch.jpg.asset.json";
 
 export type Category = {
   slug: string;
@@ -41,6 +46,7 @@ export const categories: Category[] = [
   { slug: "salad-bowl", name: "Salad Bowl" },
   { slug: "crepe", name: "Crêpe" },
   { slug: "fresh-juice", name: "The Fresh Juice" },
+  { slug: "pastry", name: "Pastry & Cakes", blurb: "Baked every morning." },
 ];
 
 export type MenuItem = {
@@ -60,9 +66,14 @@ const I = {
   muffin: muffin.url,
   cupcake: cupcake.url,
   butterfly: butterfly.url,
-  tuna: tuna.url,
+  tunaOld: tunaOld.url,
   omelet: omelet.url,
-  combo2: combo2.url,
+  cake: cake.url,
+  atomique: atomique.url,
+  tuna: tuna.url,
+  avocado: avocado.url,
+  berry: berry.url,
+  newBrunch: newBrunch.url,
 };
 
 export const items: MenuItem[] = [
@@ -114,7 +125,7 @@ export const items: MenuItem[] = [
 
   // Omelet
   { id: "omelet-mediterranean", name: "Mediterranean Omelet", description: "Olives, tomato, arugula, pesto, seeded rye.", price: 14, category: "omelet", image: I.omelet, tags: ["signature"] },
-  { id: "omelet-cheese", name: "Three-Cheese Omelet", description: "Emmental, mozzarella, parmesan.", price: 13, category: "omelet" },
+  { id: "omelet-cheese", name: "Three-Cheese Omelet", description: "Emmental, mozzarella, parmesan.", price: 13, category: "omelet", image: I.avocado },
 
   // Protein Shake
   { id: "protein-vanilla", name: "Vanilla Protein Shake", description: "Whey, banana, almond milk.", price: 11, category: "protein-shake" },
@@ -139,7 +150,9 @@ export const items: MenuItem[] = [
   { id: "tisane-camomille", name: "Camomille", description: "Floral, soothing.", price: 4, category: "tisane" },
 
   // Brunch
-  { id: "brunch-cheezy", name: "The Cheezy Brunch", description: "Eggs, breads, cheeses, fruit, juice & coffee.", price: 32, category: "brunch", image: I.omelet, tags: ["signature", "popular"] },
+  { id: "brunch-cheezy", name: "The Cheezy Brunch", description: "Eggs, breads, cheeses, fruit, juice & coffee.", price: 32, category: "brunch", image: I.newBrunch, tags: ["signature", "popular"] },
+  { id: "brunch-new", name: "New Brunch Plate", description: "Toasted brioche, cheese, mushroom, fried egg, balsamic glaze.", price: 28, category: "brunch", image: I.newBrunch, tags: ["new"] },
+  { id: "brunch-berry-brioche", name: "Berry Pistachio Brioche", description: "Brioche, whipped cream, blueberry compote, pistachio crumble.", price: 22, category: "brunch", image: I.berry, tags: ["signature"] },
 
   // Milkshake / Glace
   { id: "milkshake-vanilla", name: "Vanilla Milk Shake", description: "Bourbon vanilla ice cream blended.", price: 9, category: "milkshake" },
@@ -150,7 +163,7 @@ export const items: MenuItem[] = [
   { id: "healthy-immunity", name: "Immunity Boost", description: "Carrot, orange, turmeric, ginger.", price: 9, category: "healthy-juice" },
 
   // Toast
-  { id: "avocado-toast", name: "Avocado Toast", description: "Smashed avocado, chili flakes, lemon.", price: 12, category: "toast" },
+  { id: "avocado-toast", name: "Avocado Toast", description: "Smashed avocado, fried egg, microgreens, seeds, beet swirl.", price: 14, category: "toast", image: I.avocado, tags: ["signature"] },
   { id: "toast-pistachio", name: "Pistachio Cream Toast", description: "House pistachio, berries, mascarpone.", price: 12, category: "toast" },
 
   // Shot
@@ -158,8 +171,8 @@ export const items: MenuItem[] = [
   { id: "shot-turmeric", name: "Turmeric Shot", description: "Turmeric, orange, black pepper.", price: 4, category: "shot" },
 
   // Sandwich
-  { id: "sandwich-tuna", name: "Tuna Salad Sandwich", description: "Tuna, lettuce, tomato, side slaw.", price: 12, category: "sandwich", image: I.tuna, tags: ["signature"] },
-  { id: "sandwich-chicken", name: "Grilled Chicken Sandwich", description: "Pesto, mozzarella, sundried tomato.", price: 13, category: "sandwich" },
+  { id: "sandwich-tuna", name: "Tuna Baguette", description: "House tuna, lettuce, cherry tomato, side slaw.", price: 12, category: "sandwich", image: I.tuna, tags: ["signature", "popular"] },
+  { id: "sandwich-chicken", name: "Grilled Chicken Sandwich", description: "Pesto, mozzarella, sundried tomato.", price: 13, category: "sandwich", image: I.tunaOld },
 
   // Breakfast Bowl
   { id: "bowl-acai", name: "Açaí Bowl", description: "Açaí, banana, berries, granola.", price: 14, category: "breakfast-bowl" },
@@ -176,6 +189,12 @@ export const items: MenuItem[] = [
   // Fresh Juice
   { id: "juice-orange", name: "Fresh Orange", description: "Cold-pressed Tunisian oranges.", price: 7, category: "fresh-juice" },
   { id: "juice-pomegranate", name: "Pomegranate", description: "Hand-pressed pomegranate.", price: 9, category: "fresh-juice" },
+
+  // Pastry & Cakes
+  { id: "cake-chocolate", name: "Chocolate Dôme", description: "Glazed dark chocolate dôme, soft fudge centre.", price: 12, category: "pastry", image: I.cake, tags: ["signature"] },
+  { id: "atomique", name: "Atomique Chezzy", description: "Double-chocolate muffin, vanilla drizzle, gold sprinkles.", price: 7, category: "pastry", image: I.atomique, tags: ["popular"] },
+  { id: "cookies-pistachio", name: "Pistachio Cookie", description: "Stuffed soft cookie, white chocolate, pistachio cream.", price: 6, category: "pastry", image: I.cookies },
+  { id: "muffin-dark", name: "Dark Chocolate Muffin", description: "Warm, rich, with chocolate chips.", price: 5, category: "pastry", image: I.muffin },
 ];
 
 export const featured = [

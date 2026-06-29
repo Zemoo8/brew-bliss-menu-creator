@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import { ArrowRight, MapPin, Clock, Sparkles } from "lucide-react";
-import logo from "@/assets/logo.jpg.asset.json";
+import logo from "@/assets/logo-nobg.png.asset.json";
 import drinks from "@/assets/drinks_trio.webp.asset.json";
 import combo from "@/assets/combo_pistachio.webp.asset.json";
 import cookies from "@/assets/cookies.webp.asset.json";
