@@ -7,6 +7,13 @@
 @theme inline {
   --font-display: "Fraunces", ui-serif, Georgia, serif;
   --font-body: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-script: "Caveat Brush", "Caveat", cursive;
+  --font-heavy: "Anton", "Fraunces", ui-serif, sans-serif;
+
+  --color-hot-pink: var(--hot-pink);
+  --color-hot-pink-foreground: var(--hot-pink-foreground);
+  --color-mint: var(--mint);
+  --color-ink: var(--ink);
 
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
