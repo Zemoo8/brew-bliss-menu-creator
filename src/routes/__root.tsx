@@ -85,6 +85,12 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "author", content: "Cheezy" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
+      { property: "og:title", content: "Cheezy — Baker & Fine Cake Maker · Bizerte" },
+      { name: "twitter:title", content: "Cheezy — Baker & Fine Cake Maker · Bizerte" },
+      { property: "og:description", content: "Fresh bakes, brunch, juices and serious coffee in Bizerte. Cheezy is a neighborhood bakery and café — since 2022." },
+      { name: "twitter:description", content: "Fresh bakes, brunch, juices and serious coffee in Bizerte. Cheezy is a neighborhood bakery and café — since 2022." },
+      { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/2ffe9e27-d236-42e4-b74f-1a176442c50a" },
+      { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/2ffe9e27-d236-42e4-b74f-1a176442c50a" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
