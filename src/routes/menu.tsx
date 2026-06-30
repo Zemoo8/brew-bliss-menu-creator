@@ -50,7 +50,7 @@ function MenuPage() {
 
   const setSelectedItem = (item: MenuItem | null) => {
     navigate({
-      search: (prev) => ({ ...prev, item: item ? item.id : undefined }),
+      search: (prev: MenuSearch) => ({ ...prev, item: item ? item.id : undefined }),
       replace: false,
     });
   };
@@ -58,7 +58,7 @@ function MenuPage() {
   // Keep URL in sync with filters (replace history to avoid spam)
   useEffect(() => {
     navigate({
-      search: (prev) => ({
+      search: (prev: MenuSearch) => ({
         ...prev,
         cat: active === "all" ? undefined : active,
         q: query.trim() ? query.trim() : undefined,
@@ -137,7 +137,7 @@ function MenuPage() {
       </section>
 
       {/* SEARCH + CATEGORY CHIPS */}
-      <div className="sticky top-16 z-30 bg-background/95 backdrop-blur border-b border-border">
+      <div className="sticky top-20 z-30 bg-background/95 backdrop-blur border-b border-border">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-3 space-y-3">
           <div className="relative">
             <Search className="absolute left-4 top-1/2 -translate-y-1/2 size-4 text-muted-foreground" />
@@ -229,7 +229,11 @@ function MenuPage() {
         </div>
       </section>
 
-      <ItemDetailDialog item={selected} open={dialogOpen} onOpenChange={setDialogOpen} />
+      <ItemDetailDialog
+        item={selected}
+        open={dialogOpen}
+        onOpenChange={(open) => { if (!open) setSelectedItem(null); }}
+      />
     </div>
   );
 }
