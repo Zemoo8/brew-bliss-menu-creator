@@ -28,7 +28,7 @@ export function Header() {
     <header className="sticky top-0 z-50 backdrop-blur-md bg-background/80 border-b border-border/60">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-4">
         <Link to="/" className="flex items-center shrink-0" aria-label="Cheezy home">
-          <img src={logo.url} alt="Cheezy — Baker and Fine Cake Maker" className="h-10 sm:h-11 w-auto" />
+          <img src={logo.url} alt="Cheezy — Baker and Fine Cake Maker" className="h-14 sm:h-16 lg:h-20 w-auto -my-2" />
         </Link>
 
         <nav className="hidden md:flex items-center gap-1">
