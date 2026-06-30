@@ -1,6 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { Star, Quote } from "lucide-react";
 import team from "@/assets/team.jpg.asset.json";
 import combo from "@/assets/combo_pistachio.webp.asset.json";
+import { locations } from "@/data/locations";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
@@ -16,6 +18,10 @@ export const Route = createFileRoute("/about")({
 });
 
 function AboutPage() {
+  const reviews = locations.flatMap((l) =>
+    (l.reviews ?? []).map((r) => ({ ...r, shop: l.name.replace("Cheezy — ", "Cheezy · ") }))
+  );
+
   return (
     <div>
       <section className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 py-20 text-center">
@@ -52,6 +58,41 @@ function AboutPage() {
           ))}
         </div>
       </section>
+
+      {/* REVIEWS */}
+      <section className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-20">
+        <div className="text-center mb-12">
+          <p className="font-script text-4xl text-[var(--hot-pink)]">kind words</p>
+          <h2 className="mt-2 font-heavy uppercase text-4xl sm:text-5xl tracking-tight">
+            From our guests
+          </h2>
+        </div>
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+          {reviews.map((r, i) => (
+            <article
+              key={i}
+              className="relative rounded-3xl border border-border bg-card p-6 flex flex-col"
+            >
+              <Quote className="size-7 text-[var(--hot-pink)]/30 mb-3" />
+              <p className="text-base leading-relaxed flex-1">"{r.text}"</p>
+              <div className="mt-5 pt-4 border-t border-border flex items-center justify-between gap-3">
+                <div className="min-w-0">
+                  <p className="font-semibold truncate">{r.author}</p>
+                  <p className="text-xs text-muted-foreground truncate">{r.shop}</p>
+                </div>
+                {r.rating && (
+                  <div className="flex gap-0.5 shrink-0">
+                    {Array.from({ length: r.rating }).map((_, j) => (
+                      <Star key={j} className="size-3.5 fill-[var(--hot-pink)] text-[var(--hot-pink)]" />
+                    ))}
+                  </div>
+                )}
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
     </div>
   );
 }
+
