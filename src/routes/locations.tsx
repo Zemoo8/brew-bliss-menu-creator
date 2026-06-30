@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { MapPin, Clock, ArrowRight } from "lucide-react";
+import { MapPin, Clock, ArrowRight, Facebook, Tag, Sparkles } from "lucide-react";
 import { useLocation } from "@/lib/location-context";
 
 export const Route = createFileRoute("/locations")({
@@ -60,7 +60,21 @@ function LocationsPage() {
                 <ul className="mt-3 space-y-2 text-sm text-muted-foreground">
                   <li className="flex gap-2"><MapPin className="size-4 mt-0.5 text-accent" /> {loc.address}, {loc.city}</li>
                   <li className="flex gap-2"><Clock className="size-4 mt-0.5 text-accent" /> {loc.hours}</li>
+                  {loc.priceTier && (
+                    <li className="flex gap-2"><Tag className="size-4 mt-0.5 text-accent" /> {loc.priceTier}</li>
+                  )}
+                  {loc.vibe && (
+                    <li className="flex gap-2"><Sparkles className="size-4 mt-0.5 text-accent" /> {loc.vibe}</li>
+                  )}
                 </ul>
+                {loc.reviews && loc.reviews.length > 0 && (
+                  <blockquote className="mt-5 rounded-2xl bg-secondary/60 p-4 text-sm">
+                    <p className="italic">"{loc.reviews[0].text}"</p>
+                    <p className="mt-2 text-xs font-semibold tracking-wide text-muted-foreground">
+                      — {loc.reviews[0].author}
+                    </p>
+                  </blockquote>
+                )}
                 <div className="mt-6 flex gap-3 flex-wrap">
                   {loc.available && (
                     <button
@@ -79,6 +93,16 @@ function LocationsPage() {
                       className="inline-flex items-center gap-2 rounded-full border border-border px-5 py-2.5 text-sm font-semibold hover:bg-secondary"
                     >
                       Directions <ArrowRight className="size-4" />
+                    </a>
+                  )}
+                  {loc.facebookUrl && (
+                    <a
+                      href={loc.facebookUrl}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="inline-flex items-center gap-2 rounded-full border border-border px-5 py-2.5 text-sm font-semibold hover:bg-secondary"
+                    >
+                      <Facebook className="size-4" /> Facebook
                     </a>
                   )}
                 </div>
