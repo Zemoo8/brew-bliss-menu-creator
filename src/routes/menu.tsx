@@ -1,5 +1,5 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
-import { useMemo, useState } from "react";
+import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
+import { useEffect, useMemo, useState } from "react";
 import { ArrowRight, Search, X, MapPin } from "lucide-react";
 import { categories, items, type MenuItem } from "@/data/menu";
 import { useLocation } from "@/lib/location-context";
@@ -9,24 +9,64 @@ import { ShopGate } from "@/components/site/ShopGate";
 
 const ORDER_URL = "https://e-shkoon.com/cart/menu/NjehOhhE";
 
+type MenuSearch = { item?: string; cat?: string; q?: string };
+
 export const Route = createFileRoute("/menu")({
-  head: () => ({
-    meta: [
-      { title: "The whole menu — Cheezy Bizerte" },
-      { name: "description", content: "Coffee, juice, brunch, sandwiches, salads and pastry. Browse the full Cheezy menu." },
-      { property: "og:title", content: "The whole menu — Cheezy" },
-      { property: "og:description", content: "Coffee, juice, brunch, sandwiches, salads and pastry." },
-    ],
+  validateSearch: (s: Record<string, unknown>): MenuSearch => ({
+    item: typeof s.item === "string" ? s.item : undefined,
+    cat: typeof s.cat === "string" ? s.cat : undefined,
+    q: typeof s.q === "string" ? s.q : undefined,
   }),
+  head: ({ match }) => {
+    const itemId = (match.search as MenuSearch).item;
+    const item = itemId ? items.find((i) => i.id === itemId) : undefined;
+    const title = item ? `${item.name} — Cheezy Bizerte` : "The whole menu — Cheezy Bizerte";
+    const description = item?.description ?? "Coffee, juice, brunch, sandwiches, salads and pastry.";
+    return {
+      meta: [
+        { title },
+        { name: "description", content: description },
+        { property: "og:title", content: title },
+        { property: "og:description", content: description },
+        ...(item?.image ? [{ property: "og:image", content: item.image }] : []),
+      ],
+    };
+  },
   component: MenuPage,
 });
 
 function MenuPage() {
   const { current, hasChosen, clearChoice } = useLocation();
-  const [active, setActive] = useState<string>("all");
-  const [query, setQuery] = useState("");
-  const [selected, setSelected] = useState<MenuItem | null>(null);
-  const [dialogOpen, setDialogOpen] = useState(false);
+  const search = Route.useSearch();
+  const navigate = useNavigate({ from: Route.fullPath });
+
+  const [active, setActive] = useState<string>(search.cat ?? "all");
+  const [query, setQuery] = useState(search.q ?? "");
+  const selected = useMemo(
+    () => (search.item ? items.find((i) => i.id === search.item) ?? null : null),
+    [search.item]
+  );
+  const dialogOpen = !!selected;
+
+  const setSelectedItem = (item: MenuItem | null) => {
+    navigate({
+      search: (prev) => ({ ...prev, item: item ? item.id : undefined }),
+      replace: false,
+    });
+  };
+
+  // Keep URL in sync with filters (replace history to avoid spam)
+  useEffect(() => {
+    navigate({
+      search: (prev) => ({
+        ...prev,
+        cat: active === "all" ? undefined : active,
+        q: query.trim() ? query.trim() : undefined,
+      }),
+      replace: true,
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [active, query]);
 
   const visibleCats = useMemo(
     () => categories.filter((c) => items.some((i) => i.category === c.slug)),
@@ -52,14 +92,12 @@ function MenuPage() {
       .filter((g) => g.items.length > 0);
   }, [visibleCats, filteredItems]);
 
-  const openItem = (i: MenuItem) => {
-    setSelected(i);
-    setDialogOpen(true);
-  };
+  const openItem = (i: MenuItem) => setSelectedItem(i);
 
   if (!hasChosen) {
     return <ShopGate />;
   }
+
 
   return (
     <div>
