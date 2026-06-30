@@ -161,11 +161,11 @@ function MenuPage() {
           <div className="overflow-x-auto no-scrollbar -mx-1 px-1">
             <div className="flex gap-2 w-max">
               <Chip active={active === "all"} onClick={() => setActive("all")}>
-                All
+                ✨ Tous
               </Chip>
               {visibleCats.map((c) => (
                 <Chip key={c.slug} active={active === c.slug} onClick={() => setActive(c.slug)}>
-                  {c.name}
+                  <span className="mr-1">{c.emoji}</span>{c.name}
                 </Chip>
               ))}
             </div>
@@ -194,7 +194,7 @@ function MenuPage() {
                 {String(idx + 1).padStart(2, "0")}.
               </p>
               <h2 className="mt-3 font-heavy uppercase text-4xl sm:text-5xl tracking-tight leading-[0.9]">
-                {g.name}
+                <span className="mr-2">{g.emoji}</span>{g.name}
               </h2>
               {g.blurb && <p className="mt-3 text-muted-foreground">{g.blurb}</p>}
               <p className="mt-3 text-xs font-bold tracking-widest uppercase text-muted-foreground">
